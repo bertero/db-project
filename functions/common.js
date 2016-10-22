@@ -1,11 +1,9 @@
-var strftime = require('strftime')
-var loggedIn = false
+const strftime = require('strftime')
 
 module.exports = {
-  log         : log,
-  loginAction : loginAction,
-  loggedIn    : loggedIn,
-  keepAwake   : keepAwake
+  log                       : log,
+  keepAwake                 : keepAwake,
+  listenToUncaughtException : listenToUncaughtException
 }
 
 function log (message, details) {
@@ -26,21 +24,13 @@ function log (message, details) {
   return dateTime + fileNameLineNumber + "\n" + JSON.stringify(message)
 }
 
-function loginAction (req, res) {
-  if(req && req.body){
-    var body = req.body
-    if(body.username && body.pass){
-      if(body.username == process.env.MAIN_USER && body.pass == process.env.MAIN_PASS){
-        loggedIn = true
-        res.redirect('home')
-      }
-      else res.send('Invalid Credentials!')
-    }
-    else res.send('Please complete both fields!')
-  }
-  else res.send('Oops, something went wrong...')
-}
-
 function keepAwake (){
   log('keepAwake job!')
+}
+
+function listenToUncaughtException() {
+  process.on('uncaught exception', function(err){
+      log(err)
+      process.exit(1);
+  })
 }
