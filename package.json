@@ -1,0 +1,44 @@
+{
+  "name": "bert-jobs-project",
+  "version": "1.0.0",
+  "license": "ISC",
+  "description": "A simple job project written in JavaScript",
+  "keywords": [
+    "OpenShift",
+    "Node.js",
+    "application",
+    "openshift"
+  ],
+  "author": {
+    "name": "bcg07",
+    "email": "guilherme.bertero@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openshift/origin-server"
+  },
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.15.0",
+    "cheerio": "^0.20.0",
+    "cron": "^1.1.0",
+    "ejs": "^2.4.1",
+    "express": "^3.4.8",
+    "mailgun-js": "^0.7.7",
+    "mongoose": "^4.5.3",
+    "node-horseman": "^3.0.1",
+    "request": "^2.70.0",
+    "require-dir": "^0.3.0",
+    "strftime": "^0.9.2",
+    "underscore": "^1.8.3",
+    "url-parser": "0.0.1"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+  "private": true,
+  "main": "app.js"
+}
