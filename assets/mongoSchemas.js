@@ -18,7 +18,8 @@ module.exports = {
     email           : String,
     rg              : String,
     cpf             : String,
-    data_nascimento : String
+    data_nascimento : String,
+    senha           : String
 	}),
 
 	clientes : new mongoose.Schema({
@@ -27,7 +28,8 @@ module.exports = {
     created_at : Date,
     telefone   : String,
     email      : String,
-    cnpj       : { type : ObjectId, ref : 'funcionarios' }
+    cnpj       : { type : ObjectId, ref : 'funcionarios' },
+    senha      : String
 	}),
 
 	produtos : new mongoose.Schema({

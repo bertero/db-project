@@ -1,0 +1,136 @@
+<script src="/js/jquery-1.9.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/underscore.js"></script>
+<script src="/js/backbone.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-iso.css">
+
+<style type="text/css">
+	.center-div {
+    float: none;
+  	margin: 0 auto 0;
+  }
+  .equal-height-row {
+  	display: -webkit-box;
+	  display: -webkit-flex;
+	  display: -ms-flexbox;
+	  display:         flex;
+  }
+  .rel-position {
+  	position : relative;
+  }
+  .form-down {
+  	position: absolute;
+  	bottom: 0;
+  }
+  .text-box {
+  	margin: 20 auto
+  }
+  .start_hidden{
+  	visibility: hidden;
+  }
+
+  h1 { 
+  	font-weight: 300 !important; 
+  	font-size: 38px !important; 
+  	margin: 0px 0px 0px 0px !important; 
+  	line-height: 120% !important; 
+  	font-family: 'Open sans', sans-serif !important;
+  	text-align: center !important;
+	}
+	h2 { 
+  	font-weight: 300 !important; 
+  	font-size: 24px !important; 
+  	margin: 0px 0px 0px 0px !important; 
+  	line-height: 120% !important; 
+  	font-family: 'Open sans', sans-serif !important;
+	}
+	h3 { 
+  	font-weight: 300 !important; 
+  	font-size: 14px !important; 
+  	margin: 0px 0px 0px 0px !important; 
+  	line-height: 120% !important; 
+  	font-family: 'Open sans', sans-serif !important;
+	}
+	form {
+		font-family: 'Open sans', sans-serif !important;	
+	}
+</style>
+
+<div class="bootstrap-iso">
+	<div class="container">
+		<div class="row equal-height-row">
+		  <div class="jumbotron col-md-6" id="view_button_div">
+		  	<h1>Visualizar</h1>
+		  </div>
+
+		  <div class="jumbotron col-md-6" id="add_button_div">
+		  	<h1>Criar</h1>
+		  </div>
+	  </div>
+
+	  <div class="jumbotron start_hidden" id="query_form_div">
+	  	<form id="query_form" action="visualizar" method="POST">
+	  		<h1>Formluario de pesquisa</h1>
+	  	</form>
+	  </div>
+
+	  <div class="jumbotron start_hidden" id="query_view_div">
+	  	<h1>Area de visualizacao</h1>
+	  </div>
+
+	  <div class="jumbotron start_hidden" id="add_form_div">
+	  	<form id="add_form" action="criar" method="POST">
+	  		<h1>Formluario de criacao</h1>
+	  	</form>
+	  </div>
+
+	  <div class="jumbotron start_hidden" id="add_result_div">
+	  	<h1>Resultado da criacao</h1>
+	  </div>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+
+	$(document).on('ready', function () {
+		$('#view_button_div').on('click', showDiv.bind(null, 'queryForm')
+		$('#add_form_div').on('click', showDiv.bind(null, 'addForm')
+	}
+
+	function showDiv(divName) {
+		switch(divName) {
+			case "queryForm":
+				$('#query_form_div').show();
+				$('#query_view_div').hide();
+				$('#add_form_div').hide();
+				$('#add_result_div').hide();
+				break;
+
+			case "queryView":
+				$('#query_view_div').show();
+				$('#query_form_div').hide();
+				$('#add_form_div').hide();
+				$('#add_result_div').hide();
+				break;
+
+			case "addForm":
+				$('#add_form_div').show();
+				$('#query_form_div').hide();
+				$('#query_view_div').hide();
+				$('#add_result_div').hide();
+				break;
+
+			case "addResult":
+				$('#add_result_div').show();
+				$('#query_form_div').hide();
+				$('#query_view_div').hide();
+				$('#add_form_div').hide();
+				break;
+		}
+	}
+
+
+</script>

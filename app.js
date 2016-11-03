@@ -12,7 +12,7 @@ mongo.connect(function(){
 
 	serverFunctions.startServer(function(){
 
-		log('Bert Jobs initialized!')
+		log('ABGP Project initialized!')
 
 	})
 
