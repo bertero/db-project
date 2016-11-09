@@ -31,7 +31,10 @@
   	margin: 20 auto
   }
   .start_hidden{
-  	visibility: hidden;
+  	display: none;
+  }
+  .pointer {
+  	cursor: pointer;
   }
 
   h1 { 
@@ -62,34 +65,42 @@
 <div class="bootstrap-iso">
 	<div class="container">
 		<div class="row equal-height-row">
-		  <div class="jumbotron col-md-6" id="view_button_div">
+		  <div class="jumbotron col-md-6 pointer" id="view_button_div">
 		  	<h1>Visualizar</h1>
 		  </div>
 
-		  <div class="jumbotron col-md-6" id="add_button_div">
+		  <div class="jumbotron col-md-6 pointer" id="add_button_div">
 		  	<h1>Criar</h1>
 		  </div>
 	  </div>
 
-	  <div class="jumbotron start_hidden" id="query_form_div">
-	  	<form id="query_form" action="visualizar" method="POST">
-	  		<h1>Formluario de pesquisa</h1>
-	  	</form>
-	  </div>
+	  <div class="row equal-height-row">
+		  <div class="jumbotron start_hidden col-md-12" id="query_form_div">
+		  	<form id="query_form" action="visualizar" method="POST">
+		  		<h1>Formluario de pesquisa</h1>
+		  	</form>
+		  </div>
+		</div>
 
-	  <div class="jumbotron start_hidden" id="query_view_div">
-	  	<h1>Area de visualizacao</h1>
-	  </div>
+		<div class="row equal-height-row">
+		  <div class="jumbotron start_hidden col-md-12" id="query_view_div">
+		    <h1>Area de visualizacao</h1>
+		  </div>
+		</div>
 
-	  <div class="jumbotron start_hidden" id="add_form_div">
-	  	<form id="add_form" action="criar" method="POST">
-	  		<h1>Formluario de criacao</h1>
-	  	</form>
-	  </div>
+		<div class="row equal-height-row">
+		  <div class="jumbotron start_hidden col-md-12" id="add_form_div">
+		  	<form id="add_form" action="criar" method="POST">
+		  		<h1>Formluario de criacao</h1>
+		  	</form>
+		  </div>
+		</div>
 
-	  <div class="jumbotron start_hidden" id="add_result_div">
-	  	<h1>Resultado da criacao</h1>
-	  </div>
+		<div class="row equal-height-row">
+		  <div class="jumbotron start_hidden col-md-12" id="add_result_div">
+		  	<h1>Resultado da criacao</h1>
+		  </div>
+		</div>
 
 	</div>
 </div>
@@ -99,11 +110,12 @@
 
 	$(document).on('ready', function () {
 		$('#view_button_div').on('click', showDiv.bind(null, 'queryForm'))
-		$('#add_form_div').on('click', showDiv.bind(null, 'addForm'))
+		$('#add_button_div').on('click', showDiv.bind(null, 'addForm'))
 	})
 
 	function showDiv(divName) {
-		switch(divName) {
+		console.log(divName)
+		switch (divName) {
 			case "queryForm":
 				$('#query_form_div').show();
 				$('#query_view_div').hide();
