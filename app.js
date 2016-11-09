@@ -1,3 +1,5 @@
+global.__root = __dirname
+
 const serverFunctions     = require('./functions/server')
 const commonFunctions     = require('./functions/common.js')
 const log                 = commonFunctions.log

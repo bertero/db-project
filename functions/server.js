@@ -5,9 +5,13 @@ const commonFunctions = require('./common')
 const log             = commonFunctions.log
 const app             = express()
 const cookieParser    = require('cookie-parser')
-app.use(bodyParser.json({ limit: '50mb' }))
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
+
+app.use(express.json({ parameterLimit: 100000, limit: '50mb' }))
+app.use(express.urlencoded({ parameterLimit: 100000, limit: '50mb' }))
+app.set('view engine', 'ejs')
+app.set('views', __root + '/views')
 app.use(cookieParser())
+app.use(express.static(__root + '/public'))
 
 module.exports = {
 	startServer : startServer,

@@ -6,6 +6,10 @@
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-iso.css">
 
 <style type="text/css">
+
+	.container {
+		font-family: 'Open sans', sans-serif !important;	
+	}
 	.center-div {
     float: none;
   	margin: 0 auto 0;
@@ -52,9 +56,7 @@
   	line-height: 120% !important; 
   	font-family: 'Open sans', sans-serif !important;
 	}
-	form {
-		font-family: 'Open sans', sans-serif !important;	
-	}
+
 </style>
 
 <div class="bootstrap-iso">
@@ -96,9 +98,9 @@
 	
 
 	$(document).on('ready', function () {
-		$('#view_button_div').on('click', showDiv.bind(null, 'queryForm')
-		$('#add_form_div').on('click', showDiv.bind(null, 'addForm')
-	}
+		$('#view_button_div').on('click', showDiv.bind(null, 'queryForm'))
+		$('#add_form_div').on('click', showDiv.bind(null, 'addForm'))
+	})
 
 	function showDiv(divName) {
 		switch(divName) {
