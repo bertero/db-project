@@ -76,9 +76,127 @@
 
 	  <div class="row equal-height-row">
 		  <div class="jumbotron start_hidden col-md-12" id="query_form_div">
-		  	<form id="query_form" action="visualizar" method="POST">
-		  		<h1>Formluario de pesquisa</h1>
-		  	</form>
+		  	<div id="query_form">
+		  		<h1>Formulário de pesquisa</h1>
+		  		<select id="view_form_type_selector">
+		  			<option value="clientes">Cliente</option>
+		  			<option value="filiais">Filial</option>
+		  			<option value="funcionarios">Funcionário</option>
+		  			<option value="pedidos">Pedidos</option>
+		  			<option value="produtos">Produtos</option>
+		  		</select>
+
+		  		<p><i>É necessário o preenchimento de pelo menos um campo dos listados abaixo</i></p>
+
+	  			<div id="view_form_container">
+
+	  				<div id="view_form_clientes_div">
+	  					<form id="view_clientes" action="visualizar" method="POST">
+		  					<input type="hidden" name="viewType" value="clientes">
+		  					<p>
+		  						Nome:
+		  						<p><input type="text" name="nome" value=""></p>
+		  					</p>
+		  					<p>
+		  						Email:
+		  						<p><input type="text" name="email" value=""></p>
+		  					</p>
+		  					<p>
+		  						CNPJ:
+		  						<p><input type="text" name="cnpj" value=""></p>
+		  					</p>
+		  					<p>
+		  						ID:
+		  						<p><input type="text" name="id" value=""></p>
+		  					</p>
+		  					<button class="btn btn-default view_form_submit" type="button" value="view_clientes">
+							    Pesquisar
+							  </button>
+	  					</form>
+	  				</div>
+
+	  				<div id="view_form_filiais_div" class="start_hidden">
+	  					<form id="view_filiais" action="visualizar" method="POST">
+	  						<input type="hidden" name="viewType" value="filiais">
+	  						<p>
+		  						Nome:
+		  						<p><input type="text" name="nome" value=""></p>
+		  					</p>
+		  					<p>
+		  						Cidade Base:
+		  						<p><input type="text" name="cidadeBase" value=""></p>
+		  					</p>
+		  					<p>
+		  						ID:
+		  						<p><input type="text" name="id" value=""></p>
+		  					</p>
+		  					<button class="btn btn-default view_form_submit" type="button" value="view_filiais">
+							    Pesquisar
+							  </button>
+	  					</form>
+	  				</div>
+
+	  				<div id="view_form_funcionarios_div" class="start_hidden">
+	  					<form id="view_funcionarios" action="visualizar" method="POST">
+	  						<input type="hidden" name="viewType" value="funcionarios">
+	  						<p>
+	  							Nome:
+	  							<p><input type="text" name="nome" value=""></p>
+		  					</p>
+		  					<p>
+		  						Email:
+		  						<p><input type="text" name="email" value=""></p>
+		  					</p>
+		  					<p>
+		  						RG:
+		  						<p><input type="text" name="cnpj" value=""></p>
+		  					</p>
+		  					<p>
+		  						CPF:
+		  						<p><input type="text" name="cpf" value=""></p>
+		  					</p>
+		  					<p>
+		  						ID:
+		  						<p><input type="text" name="id" value=""></p>
+		  					</p>
+		  					<button class="btn btn-default view_form_submit" type="button" value="view_funcionarios">
+							    Pesquisar
+							  </button>
+	  					</form>
+	  				</div>
+
+	  				<div id="view_form_pedidos_div" class="start_hidden">
+	  					<form id="view_pedidos" action="visualizar" method="POST">
+	  						<input type="hidden" name="viewType" value="pedidos">
+	  						<p>
+	  							Código de Pedido:
+	  							<p><input type="text" name="id" value=""></p>
+		  					</p>
+		  					<button class="btn btn-default view_form_submit" type="button" value="view_pedidos">
+							    Pesquisar
+							  </button>
+	  					</form>
+	  				</div>
+
+	  				<div id="view_form_produtos_div" class="start_hidden">
+	  					<form id="view_produtos" action="visualizar" method="POST">
+	  						<input type="hidden" name="viewType" value="produtos">
+	  						<p>
+		  						Nome:
+		  						<p><input type="text" name="nome" value=""></p>
+		  					</p>
+		  					<p>
+		  						Código de Produto:
+		  						<p><input type="text" name="id" value=""></p>
+		  					</p>
+		  					<button class="btn btn-default view_form_submit" type="button" value="view_produtos">
+							    Pesquisar
+							  </button>
+	  					</form>
+	  				</div>
+
+	  			</div>
+		  	</div>
 		  </div>
 		</div>
 
@@ -90,9 +208,153 @@
 
 		<div class="row equal-height-row">
 		  <div class="jumbotron start_hidden col-md-12" id="add_form_div">
-		  	<form id="add_form" action="criar" method="POST">
-		  		<h1>Formluario de criacao</h1>
-		  	</form>
+	  		<h1>Formluario de criacao</h1>
+	  		<select id="create_form_type_selector">
+	  			<option value="clientes">Cliente</option>
+	  			<option value="filiais">Filial</option>
+	  			<option value="funcionarios">Funcionário</option>
+	  			<option value="pedidos">Pedidos</option>
+	  			<option value="produtos">Produtos</option>
+	  		</select>
+
+	  		<p><i>É necessário o preenchimento de todos os campos listados abaixo</i></p>
+
+  			<div id="create_form_container">
+
+  				<div id="create_form_clientes_div">
+  					<form id="create_clientes" action="visualizar" method="POST">
+	  					<input type="hidden" name="viewType" value="clientes">
+	  					<p>
+	  						Nome:
+	  						<p><input type="text" name="nome" value=""></p>
+	  					</p>
+	  					<p>
+	  						Endereço:
+	  						<p><input type="text" name="endereco" value=""></p>
+	  					</p>
+	  					<p>
+	  						Telefone:
+	  						<p><input type="text" name="telefone" value=""></p>
+	  					</p>
+	  					<p>
+	  						Email:
+	  						<p><input type="text" name="email" value=""></p>
+	  					</p>
+	  					<p>
+	  						CNPJ:
+	  						<p><input type="text" name="cnpj" value=""></p>
+	  					</p>
+	  					<button class="btn btn-default create_form_submit" type="button" value="create_clientes">
+						    Pesquisar
+						  </button>
+  					</form>
+  				</div>
+
+  				<div id="create_form_filiais_div" class="start_hidden">
+  					<form id="create_filiais" action="visualizar" method="POST">
+  						<input type="hidden" name="viewType" value="filiais">
+  						<p>
+	  						Nome:
+	  						<p><input type="text" name="nome" value=""></p>
+	  					</p>
+	  					<p>
+	  						Cidade Base:
+	  						<p><input type="text" name="cidadeBase" value=""></p>
+	  					</p>
+	  					<p>
+	  						Endereço:
+	  						<p><input type="text" name="endereco" value=""></p>
+	  					</p>
+	  					<p>
+	  						Telefone:
+	  						<p><input type="text" name="telefone" value=""></p>
+	  					</p>
+	  					<p>
+	  						Email do Responsável:
+	  						<p><input type="text" name="emailFuncionario" value=""></p>
+	  					</p>
+	  					<button class="btn btn-default view_form_submit" type="button" value="create_filiais">
+						    Pesquisar
+						  </button>
+  					</form>
+  				</div>
+
+  				<div id="create_form_funcionarios_div" class="start_hidden">
+  					<form id="create_funcionarios" action="visualizar" method="POST">
+  						<input type="hidden" name="viewType" value="funcionarios">
+  						<p>
+	  						Nome:
+	  						<p><input type="text" name="nome" value=""></p>
+	  					</p>
+	  					<p>
+	  						Endereço:
+	  						<p><input type="text" name="endereco" value=""></p>
+	  					</p>
+	  					<p>
+	  						Telefone:
+	  						<p><input type="text" name="telefone" value=""></p>
+	  					</p>
+	  					<p>
+	  						Email:
+	  						<p><input type="text" name="email" value=""></p>
+	  					</p>
+	  					<p>
+	  						RG:
+	  						<p><input type="text" name="cnpj" value=""></p>
+	  					</p>
+	  					<p>
+	  						CPF:
+	  						<p><input type="text" name="cpf" value=""></p>
+	  					</p>
+	  					<p>
+	  						Data de Nascimento:
+	  						<p><input type="text" name="dataNasc" value=""></p>
+	  					</p>
+	  					<button class="btn btn-default view_form_submit" type="button" value="create_funcionarios">
+						    Pesquisar
+						  </button>
+  					</form>
+  				</div>
+
+  				<div id="create_form_pedidos_div" class="start_hidden">
+  					<form id="create_pedidos" action="visualizar" method="POST">
+  						<input type="hidden" name="viewType" value="pedidos">
+  						<p>
+  							Escolha:
+  							<p><input type="text" name="id" value=""></p>
+	  					</p>
+	  					<button class="btn btn-default view_form_submit" type="button" value="create_pedidos">
+						    Pesquisar
+						  </button>
+  					</form>
+  				</div>
+
+  				<div id="create_form_produtos_div" class="start_hidden">
+  					<form id="create_produtos" action="visualizar" method="POST">
+  						<input type="hidden" name="viewType" value="produtos">
+  						<p>
+	  						Nome:
+	  						<p><input type="text" name="nome" value=""></p>
+	  					</p>
+	  					<p>
+	  						Tamanho:
+	  						<p><input type="text" name="tamanho" value=""></p>
+	  					</p>
+	  					<p>
+	  						Material:
+	  						<p><input type="text" name="material" value=""></p>
+	  					</p>
+	  					<p>
+	  						Preço:
+	  						<p><input type="text" name="preco" value=""></p>
+	  					</p>
+	  					<button class="btn btn-default view_form_submit" type="button" value="create_produtos">
+						    Pesquisar
+						  </button>
+  					</form>
+  				</div>
+
+  			</div>
 		  </div>
 		</div>
 
@@ -105,46 +367,4 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-	
-
-	$(document).on('ready', function () {
-		$('#view_button_div').on('click', showDiv.bind(null, 'queryForm'))
-		$('#add_button_div').on('click', showDiv.bind(null, 'addForm'))
-	})
-
-	function showDiv(divName) {
-		console.log(divName)
-		switch (divName) {
-			case "queryForm":
-				$('#query_form_div').show();
-				$('#query_view_div').hide();
-				$('#add_form_div').hide();
-				$('#add_result_div').hide();
-				break;
-
-			case "queryView":
-				$('#query_view_div').show();
-				$('#query_form_div').hide();
-				$('#add_form_div').hide();
-				$('#add_result_div').hide();
-				break;
-
-			case "addForm":
-				$('#add_form_div').show();
-				$('#query_form_div').hide();
-				$('#query_view_div').hide();
-				$('#add_result_div').hide();
-				break;
-
-			case "addResult":
-				$('#add_result_div').show();
-				$('#query_form_div').hide();
-				$('#query_view_div').hide();
-				$('#add_form_div').hide();
-				break;
-		}
-	}
-
-
-</script>
+<script src="/js/admin-screen.js"></script>
