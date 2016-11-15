@@ -1,9 +1,11 @@
 const strftime = require('strftime')
+const u        = require('underscore')
 
 module.exports = {
   log                       : log,
   keepAwake                 : keepAwake,
-  listenToUncaughtException : listenToUncaughtException
+  listenToUncaughtException : listenToUncaughtException,
+  filter                    : filterJson,
 }
 
 function log (message, details) {
@@ -33,4 +35,12 @@ function listenToUncaughtException() {
       log(err)
       process.exit(1);
   })
+}
+
+function filterJson (json) {
+  var newJson = {}
+  u.each(json, function (value, key) {
+    if (value || value === false) newJson[key] = value
+  })
+  return newJson
 }

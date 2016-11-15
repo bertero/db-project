@@ -80,11 +80,25 @@ function showForm (type, formName) {
 }
 
 function postViewForm (buttonInfo) {
-	console.log(buttonInfo.target.value)
-	// const data = $('#').serializeArray().reduce(function(obj, item) {
-	//     obj[item.name] = item.value;
-	//     return obj;
-	// }, {});
+	const formId = buttonInfo.target.value
+	console.log(formId)
+	const data = $('#' + formId).serializeArray().reduce(function(obj, item) {
+	    obj[item.name] = item.value;
+	    return obj;
+	}, {});
+
+	$.ajax({
+					url      : '/admin/viewQuery',
+					type     : 'POST',
+					data     : data,
+					
+					error    : function (errorData) {
+						console.log(errorData)
+					},
+
+					timeout : 30000
+				}
+					)
 }
 
 function postCreateForm (buttonInfo) {

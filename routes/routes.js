@@ -4,7 +4,8 @@ const log              = commonFunctions.log
 const summarizeMongo   = require('../functions/mongo.js').summarize
 const routesForLanding = ['/health', '/uptimeCheck']
 const renderMap        = {
-	admin : require('../controllers/adminScreen')
+	admin     : require('../controllers/adminScreen'),
+	viewQuery : require('../controllers/viewQuery')
 }
 
 module.exports = {
@@ -19,4 +20,5 @@ function initRoutes() {
   })
 
   app.get('/admin', renderMap.admin)
+  app.post('/admin/viewQuery', renderMap.viewQuery)
 }

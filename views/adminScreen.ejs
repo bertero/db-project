@@ -62,6 +62,8 @@
 
 </style>
 
+<% if (!numberProducts) const numberProducts = 3 %>
+
 <div class="bootstrap-iso">
 	<div class="container">
 		<div class="row equal-height-row">
@@ -245,7 +247,7 @@
 	  						<p><input type="text" name="cnpj" value=""></p>
 	  					</p>
 	  					<button class="btn btn-default create_form_submit" type="button" value="create_clientes">
-						    Pesquisar
+						    Criar
 						  </button>
   					</form>
   				</div>
@@ -273,8 +275,8 @@
 	  						Email do Responsável:
 	  						<p><input type="text" name="emailFuncionario" value=""></p>
 	  					</p>
-	  					<button class="btn btn-default view_form_submit" type="button" value="create_filiais">
-						    Pesquisar
+	  					<button class="btn btn-default create_form_submit" type="button" value="create_filiais">
+						    Criar
 						  </button>
   					</form>
   				</div>
@@ -310,8 +312,8 @@
 	  						Data de Nascimento:
 	  						<p><input type="text" name="dataNasc" value=""></p>
 	  					</p>
-	  					<button class="btn btn-default view_form_submit" type="button" value="create_funcionarios">
-						    Pesquisar
+	  					<button class="btn btn-default create_form_submit" type="button" value="create_funcionarios">
+						    Criar
 						  </button>
   					</form>
   				</div>
@@ -320,11 +322,31 @@
   					<form id="create_pedidos" action="visualizar" method="POST">
   						<input type="hidden" name="viewType" value="pedidos">
   						<p>
-  							Escolha:
-  							<p><input type="text" name="id" value=""></p>
+	  						Email do Cliente:
+	  						<p><input type="text" name="email" value=""></p>
 	  					</p>
-	  					<button class="btn btn-default view_form_submit" type="button" value="create_pedidos">
-						    Pesquisar
+	  					<p>
+	  						Email do Funcionário Responsável:
+	  						<p><input type="text" name="email" value=""></p>
+	  					</p>
+	  					<p>
+	  						Cidade Base:
+	  						<p><input type="text" name="email" value=""></p>
+	  					</p>
+
+  						<% for (var productNumber = 0; productNumber < numberProducts; productNumber++) { %>
+  						<p><i>Produto nº <%= productNumber + 1 %></i></p>
+  						<p>
+  							Nome:
+  							<p><input type="text" name="<% 'nome' + productNumber %>" value=""></p>
+	  					</p>
+	  					<p>
+  							Quantidade:
+  							<p><input type="text" name="<% 'quantidade' + productNumber %>" value=""></p>
+	  					</p>
+	  					<% } %>
+	  					<button class="btn btn-default create_form_submit" type="button" value="create_pedidos">
+						    Criar
 						  </button>
   					</form>
   				</div>
@@ -348,8 +370,8 @@
 	  						Preço:
 	  						<p><input type="text" name="preco" value=""></p>
 	  					</p>
-	  					<button class="btn btn-default view_form_submit" type="button" value="create_produtos">
-						    Pesquisar
+	  					<button class="btn btn-default create_form_submit" type="button" value="create_produtos">
+						    Criar
 						  </button>
   					</form>
   				</div>
@@ -361,6 +383,7 @@
 		<div class="row equal-height-row">
 		  <div class="jumbotron start_hidden col-md-12" id="add_result_div">
 		  	<h1>Resultado da criacao</h1>
+		  	<div></div>
 		  </div>
 		</div>
 

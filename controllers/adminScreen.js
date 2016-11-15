@@ -1,5 +1,5 @@
 const log = require('../functions/common').log
 
 module.exports = function (req, res) {
-	res.render('../views/adminScreen.ejs')
+	res.render('../views/adminScreen.ejs', { numberProducts : 1 })
 }
