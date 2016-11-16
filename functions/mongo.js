@@ -3,6 +3,7 @@ const commonFunctions = require('./common.js')
 const log             = commonFunctions.log
 const u               = require('underscore')
 const schemas         = require('../assets/mongoSchemas')
+const ObjectId        = mongoose.Schema.Types.ObjectId
 
 var uri = 'mongodb://<dbuser>:<dbpassword>@ds023714.mlab.com:23714/main_first'
 uri     = uri.replace('<dbuser>',     process.env.MONGO_MAIN_USER)
@@ -13,7 +14,8 @@ var db          = mongoose.createConnection(uri)
 module.exports = {
 	connect     : connect,
 	collections : {},
-	persist     : persistDoc
+	persist     : persistDoc,
+	findDoc     : findDoc,
 }
 
 function connect(callback) {
@@ -36,12 +38,22 @@ function connect(callback) {
 }
 
 function persistDoc(collection, data, callback) {
-	
-	const docToBePersisted = new collections[collection](data)
 
-	docToBePersisted.save(function (err) {
-		if (err) return callback(err)
-		callback()
-	})
+	data.created_at = new Date()
 
+	const docToBePersisted = new module.exports.collections[collection](data)
+
+	docToBePersisted.save(callback)
+
+}
+
+function findDoc(collection, query, infoRequested, callback) {
+
+	if (!query)         query         = {}
+	if (!infoRequested) infoRequested = {}
+
+	module.exports.collections[collection]
+		.find(query, infoRequested)
+		.lean(true)
+		.exec(callback)
 }

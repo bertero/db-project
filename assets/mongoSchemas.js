@@ -3,17 +3,18 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 
 module.exports = {
 	clientes : new mongoose.Schema({
-    nome       : String,
-    endereco   : String,
-    created_at : Date,
-    telefone   : String,
-    email      : String,
-    cnpj       : String
+    nome_contato : String,
+    nome_empresa : String,
+    endereco     : String,
+    created_at   : Date,
+    telefone     : String,
+    email        : String,
+    cnpj         : String
 	}),
 
 	filiais : new mongoose.Schema({
     nome           : String,
-    cidadeBase     : String,
+    cidade_base    : String,
     endereco       : String,
     created_at     : Date,
     telefone       : String,
