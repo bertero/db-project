@@ -1,66 +1,5 @@
-<script src="/js/jquery-1.9.1.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/underscore.js"></script>
-<script src="/js/backbone.js"></script>
-
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-iso.css">
-
-<style type="text/css">
-
-	.container {
-		font-family: 'Open sans', sans-serif !important;	
-	}
-	.center-div {
-    float: none;
-  	margin: 0 auto 0;
-  }
-  .equal-height-row {
-  	display: -webkit-box;
-	  display: -webkit-flex;
-	  display: -ms-flexbox;
-	  display:         flex;
-  }
-  .rel-position {
-  	position : relative;
-  }
-  .form-down {
-  	position: absolute;
-  	bottom: 0;
-  }
-  .text-box {
-  	margin: 20 auto
-  }
-  .start_hidden{
-  	display: none;
-  }
-  .pointer {
-  	cursor: pointer;
-  }
-
-  h1 { 
-  	font-weight: 300 !important; 
-  	font-size: 38px !important; 
-  	margin: 0px 0px 0px 0px !important; 
-  	line-height: 120% !important; 
-  	font-family: 'Open sans', sans-serif !important;
-  	text-align: center !important;
-	}
-	h2 { 
-  	font-weight: 300 !important; 
-  	font-size: 24px !important; 
-  	margin: 0px 0px 0px 0px !important; 
-  	line-height: 120% !important; 
-  	font-family: 'Open sans', sans-serif !important;
-	}
-	h3 { 
-  	font-weight: 300 !important; 
-  	font-size: 14px !important; 
-  	margin: 0px 0px 0px 0px !important; 
-  	line-height: 120% !important; 
-  	font-family: 'Open sans', sans-serif !important;
-	}
-
-</style>
+<link rel="stylesheet" href="/css/common.css">
 
 <% if (!numberProducts) const numberProducts = 3 %>
 
@@ -93,7 +32,7 @@
 	  			<div id="view_form_container">
 
 	  				<div id="view_form_clientes_div">
-	  					<form id="view_clientes" action="visualizar" method="POST">
+	  					<form id="view_clientes" action="/admin/viewQuery" method="POST">
 		  					<input type="hidden" name="viewType" value="clientes">
 		  					<p>
 		  						Nome Contato:
@@ -115,6 +54,7 @@
 		  						ID:
 		  						<p><input type="text" name="id" value=""></p>
 		  					</p>
+		  					<input type="submit" value="Pesquisar">
 		  					<button class="btn btn-default view_form_submit" type="button" value="view_clientes">
 							    Pesquisar
 							  </button>
@@ -392,4 +332,8 @@
 	</div>
 </div>
 
+<script src="/js/jquery-1.9.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/underscore.js"></script>
+<script src="/js/backbone.js"></script>
 <script src="/js/admin-screen.js"></script>

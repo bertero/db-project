@@ -93,7 +93,14 @@ function postViewForm (buttonInfo) {
 					data     : data,
 					
 					error    : function (errorData) {
+						console.log('error')
 						console.log(errorData)
+					},
+
+					complete : function (data) {
+						document.open()
+		        document.write(data.responseText)
+		        document.close()
 					},
 
 					timeout : 30000

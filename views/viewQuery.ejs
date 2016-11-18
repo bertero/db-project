@@ -1,9 +1,21 @@
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-iso.css">
+<link rel="stylesheet" href="/css/common.css">
+
 <div class="bootstrap-iso">
 	<div class="container">
 		<div class="row equal-height-row">
-		  <div class="jumbotron start_hidden col-md-12" id="query_view_div">
-		    <h1>Area de visualizacao</h1>
+		  <div class="jumbotron col-md-12" id="query_view_div">
+		    <% for (var key in results) { %>
+		    	<p><%= key %>:
+			    	<input type="text" name="<%= key %>" value="<%= results[key] %>">
+		    	</p>
+		    <% } %>
 		  </div>
 		</div>
 	</div>
 </div>
+
+<script src="/js/jquery-1.9.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/underscore.js"></script>
+<script src="/js/backbone.js"></script>

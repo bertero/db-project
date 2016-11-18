@@ -9,14 +9,20 @@ module.exports = function (req, res) {
 
 	findDoc(body.viewType, createQuery(body), null, function (err, results) {
 		if (err) return res.send(500)
-		res.render('../views/viewQuery.ejs', { type : body.viewType, results : results[0] })
+		results[0] = u.omit(results[0], '_id')
+		results[0] = u.omit(results[0], '__v')
+		results[0] = u.omit(results[0], 'senha')
+		results[0] = u.omit(results[0], 'created_at')
+		log(results[0])
+		res.status(302).render('../views/viewQuery.ejs', { type : body.viewType, results : results[0] })
 	})
 }
 
 function createQuery(body) {
+	var query = {}
 	switch (body.viewType) {
 		case 'clientes':
-			return {
+			query = {
 				_id          : body.id,
 				nome_contato : body.nomeContato,
 				nome_empresa : body.nomeEmpresa,
@@ -26,7 +32,7 @@ function createQuery(body) {
 			break
 
 		case 'filiais':
-			return {
+			query = {
 				_id         : body.id,
 				nome        : body.nome,
 				cidade_base : body.cidadeBase,
@@ -34,7 +40,7 @@ function createQuery(body) {
 			break
 
 		case 'funcionarios':
-			return {
+			query = {
 				_id   : body.id,
 				nome  : body.nome,
 				email : body.email,
@@ -44,16 +50,17 @@ function createQuery(body) {
 			break
 
 		case 'pedidos':
-			return {
+			query = {
 				_id : body.id
 			}
 			break
 
 		case 'produtos':
-			return {
+			query = {
 				_id  : body.id,
 				nome : body.nome
 			}
 			break
 	}
+	return u.compact(query)
 }
