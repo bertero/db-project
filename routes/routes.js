@@ -5,7 +5,8 @@ const summarizeMongo   = require('../functions/mongo.js').summarize
 const routesForLanding = ['/health', '/uptimeCheck']
 const renderMap        = {
 	admin     : require('../controllers/adminScreen'),
-	viewQuery : require('../controllers/viewQuery')
+	viewQuery : require('../controllers/viewQuery'),
+	edit      : require('../controllers/edit')
 }
 
 module.exports = {
@@ -19,6 +20,12 @@ function initRoutes() {
     })
   })
 
+  //Admin Home
   app.get('/admin', renderMap.admin)
+
+  //Search and render query results
   app.post('/admin/viewQuery', renderMap.viewQuery)
+
+  //Persist modifications and re-render query results
+  app.post('/admin/edit', renderMap.edit)
 }

@@ -12,10 +12,11 @@ uri     = uri.replace('<dbpassword>', process.env.MONGO_MAIN_PASSWORD)
 var db          = mongoose.createConnection(uri)
 
 module.exports = {
-	connect     : connect,
-	collections : {},
-	persist     : persistDoc,
-	findDoc     : findDoc,
+	connect       : connect,
+	collections   : {},
+	persistNew    : persistNewDoc,
+	persistUpdate : persistUpdatedDoc,
+	find          : findDoc,
 }
 
 function connect(callback) {
@@ -37,13 +38,19 @@ function connect(callback) {
 
 }
 
-function persistDoc(collection, data, callback) {
+function persistNewDoc(collection, data, callback) {
 
 	data.created_at = new Date()
 
 	const docToBePersisted = new module.exports.collections[collection](data)
 
 	docToBePersisted.save(callback)
+
+}
+
+function persistUpdatedDoc(collection, id, data, callback) {
+
+	module.exports.collections[collection].update({ _id : id}, data).exec(callback)
 
 }
 
