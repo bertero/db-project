@@ -80,32 +80,32 @@ function showForm (type, formName) {
 }
 
 function postViewForm (buttonInfo) {
-	const formId = buttonInfo.target.value
-	console.log(formId)
-	const data = $('#' + formId).serializeArray().reduce(function(obj, item) {
-	    obj[item.name] = item.value;
-	    return obj;
-	}, {});
+	// const formId = buttonInfo.target.value
+	// console.log(formId)
+	// const data = $('#' + formId).serializeArray().reduce(function(obj, item) {
+	//     obj[item.name] = item.value;
+	//     return obj;
+	// }, {});
 
-	$.ajax({
-					url      : '/admin/viewQuery',
-					type     : 'POST',
-					data     : data,
+	// $.ajax({
+	// 				url      : '/admin/viewQuery',
+	// 				type     : 'POST',
+	// 				data     : data,
 					
-					error    : function (errorData) {
-						console.log('error')
-						console.log(errorData)
-					},
+	// 				error    : function (errorData) {
+	// 					console.log('error')
+	// 					console.log(errorData)
+	// 				},
 
-					complete : function (data) {
-						document.open()
-		        document.write(data.responseText)
-		        document.close()
-					},
+	// 				complete : function (data) {
+	// 					document.open()
+	// 	        document.write(data.responseText)
+	// 	        document.close()
+	// 				},
 
-					timeout : 30000
-				}
-					)
+	// 				timeout : 30000
+	// 			}
+	// 				)
 }
 
 function postCreateForm (buttonInfo) {

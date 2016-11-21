@@ -8,11 +8,13 @@ const initRoutes          = require('./routes/routes').init
 
 commonFunctions.listenToUncaughtException()
 
-mongo.connect(function(){
+log('ABGP initializing...')
+
+mongo.connect(function () {
 
 	initRoutes()
 
-	serverFunctions.startServer(function(){
+	serverFunctions.startServer(function () {
 
 		log('ABGP Project initialized!')
 

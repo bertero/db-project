@@ -44,3 +44,74 @@ function filterJson (json) {
   })
   return newJson
 }
+
+function createMongoJson(body) {
+  var query = {}
+  switch (body.viewType) {
+    case 'clientes':
+      query = {
+        _id          : body.id,
+        nome_contato : body.nomeContato,
+        nome_empresa : body.nomeEmpresa,
+        email        : body.email,
+        cnpj         : body.cnpj,
+        endereco     : body.endereco,
+        telefone     : body.telefone
+      }
+      break
+
+    case 'filiais':
+      query = {
+        _id            : body.id,
+        nome           : body.nome,
+        cidade_base    : body.cidadeBase,
+        endereco       : body.endereco,
+        telefone       : body.telefone,
+        responsavel_id : body.responsavelId
+      }
+      break
+
+    case 'funcionarios':
+      query = {
+        _id             : body.id,
+        nome            : body.nome,
+        email           : body.email,
+        rg              : body.rg,
+        cpf             : body.cpf,
+        endereco        : body.endereco,
+        telefone        : body.telefone,
+        data_nascimento : body.dataNasc,
+        senha           : body.senha
+      }
+      break
+
+    case 'pedidos':
+      query = {
+        _id            : body.id,
+        lista_produtos : createProductsList(body),
+        filial_id      : body.filialId,
+        funcionario_id : body.funcionarioId,
+        cliente_id     : body.clienteId
+      }
+      break
+
+    case 'produtos':
+      query = {
+        _id      : body.id,
+        nome     : body.nome,
+        tamanho  : body.tamanho,
+        material : body.material,
+        preco    : body.preco
+      }
+      break
+  }
+  return u.compact(query)
+}
+
+function createProductsList(body) {
+  var list = {}
+  for (var index = 0; index < 10; index++) {
+    if (body['produto_' + index]) list[body['produto_' + index]] = body['quantidade_' + index]
+  }
+  return list
+}

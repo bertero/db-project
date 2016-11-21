@@ -6,7 +6,8 @@ const routesForLanding = ['/health', '/uptimeCheck']
 const renderMap        = {
 	admin     : require('../controllers/adminScreen'),
 	viewQuery : require('../controllers/viewQuery'),
-	edit      : require('../controllers/edit')
+	edit      : require('../controllers/edit'),
+  create    : require('../controllers/create')
 }
 
 module.exports = {
@@ -28,4 +29,7 @@ function initRoutes() {
 
   //Persist modifications and re-render query results
   app.post('/admin/edit', renderMap.edit)
+
+  //Persist new documents
+  app.post('/admin/create', renderMap.create)
 }

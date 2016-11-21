@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-iso.css">
 <link rel="stylesheet" href="/css/common.css">
 
-<% if (!numberProducts) const numberProducts = 3 %>
+<% if (!numberProducts) const numberProducts = 10 %>
 
 <div class="bootstrap-iso">
 	<div class="container">
@@ -54,8 +54,7 @@
 		  						ID:
 		  						<p><input type="text" name="id" value=""></p>
 		  					</p>
-		  					<input type="submit" value="Pesquisar">
-		  					<button class="btn btn-default view_form_submit" type="button" value="view_clientes">
+		  					<button class="btn btn-default view_form_submit" type="submit" value="view_clientes">
 							    Pesquisar
 							  </button>
 	  					</form>
@@ -76,7 +75,7 @@
 		  						ID:
 		  						<p><input type="text" name="id" value=""></p>
 		  					</p>
-		  					<button class="btn btn-default view_form_submit" type="button" value="view_filiais">
+		  					<button class="btn btn-default view_form_submit" type="submit" value="view_clientes">
 							    Pesquisar
 							  </button>
 	  					</form>
@@ -105,7 +104,7 @@
 		  						ID:
 		  						<p><input type="text" name="id" value=""></p>
 		  					</p>
-		  					<button class="btn btn-default view_form_submit" type="button" value="view_funcionarios">
+		  					<button class="btn btn-default view_form_submit" type="submit" value="view_funcionarios">
 							    Pesquisar
 							  </button>
 	  					</form>
@@ -118,7 +117,7 @@
 	  							Código de Pedido:
 	  							<p><input type="text" name="id" value=""></p>
 		  					</p>
-		  					<button class="btn btn-default view_form_submit" type="button" value="view_pedidos">
+		  					<button class="btn btn-default view_form_submit" type="submit" value="view_pedidos">
 							    Pesquisar
 							  </button>
 	  					</form>
@@ -135,7 +134,7 @@
 		  						Código de Produto:
 		  						<p><input type="text" name="id" value=""></p>
 		  					</p>
-		  					<button class="btn btn-default view_form_submit" type="button" value="view_produtos">
+		  					<button class="btn btn-default view_form_submit" type="submit" value="view_produtos">
 							    Pesquisar
 							  </button>
 	  					</form>
@@ -188,7 +187,7 @@
 	  						CNPJ:
 	  						<p><input type="text" name="cnpj" value=""></p>
 	  					</p>
-	  					<button class="btn btn-default create_form_submit" type="button" value="create_clientes">
+	  					<button class="btn btn-default create_form_submit" type="submit" value="create_clientes">
 						    Criar
 						  </button>
   					</form>
@@ -217,7 +216,7 @@
 	  						Email do Responsável:
 	  						<p><input type="text" name="emailFuncionario" value=""></p>
 	  					</p>
-	  					<button class="btn btn-default create_form_submit" type="button" value="create_filiais">
+	  					<button class="btn btn-default create_form_submit" type="submit" value="create_filiais">
 						    Criar
 						  </button>
   					</form>
@@ -254,7 +253,11 @@
 	  						Data de Nascimento:
 	  						<p><input type="text" name="dataNasc" value=""></p>
 	  					</p>
-	  					<button class="btn btn-default create_form_submit" type="button" value="create_funcionarios">
+	  					<p>
+	  						Senha:
+	  						<p><input type="password" name="senha" value=""></p>
+	  					</p>
+	  					<button class="btn btn-default create_form_submit" type="submit" value="create_funcionarios">
 						    Criar
 						  </button>
   					</form>
@@ -280,14 +283,14 @@
   						<p><i>Produto nº <%= productNumber + 1 %></i></p>
   						<p>
   							Nome:
-  							<p><input type="text" name="<% 'nome' + productNumber %>" value=""></p>
+  							<p><input type="text" name="nome_<%= productNumber %>" value=""></p>
 	  					</p>
 	  					<p>
   							Quantidade:
-  							<p><input type="text" name="<% 'quantidade' + productNumber %>" value=""></p>
+  							<p><input type="text" name="quantidade_<%= productNumber %>" value=""></p>
 	  					</p>
 	  					<% } %>
-	  					<button class="btn btn-default create_form_submit" type="button" value="create_pedidos">
+	  					<button class="btn btn-default create_form_submit" type="submit" value="create_pedidos">
 						    Criar
 						  </button>
   					</form>
@@ -312,7 +315,7 @@
 	  						Preço:
 	  						<p><input type="text" name="preco" value=""></p>
 	  					</p>
-	  					<button class="btn btn-default create_form_submit" type="button" value="create_produtos">
+	  					<button class="btn btn-default create_form_submit" type="submit" value="create_produtos">
 						    Criar
 						  </button>
   					</form>
