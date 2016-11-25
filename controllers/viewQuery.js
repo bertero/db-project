@@ -11,13 +11,25 @@ module.exports = function (req, res) {
 	findDoc(body.viewType, createQuery(body), null, function (err, results) {
 			if (err) return res.send(500)
 
+			if (!results.length) 
+				return res
+				.status(200)
+				.render('../views/error.ejs', {
+					type : 400, 
+					message : 'Nenhum documento foi encontrado, por favor revise sua pesquisa!' 
+				})
+
 			const id   = results[0]._id
 
-			results[0] = u.omit(results[0], '_id')
-			results[0] = u.omit(results[0], '__v')
-			results[0] = u.omit(results[0], 'senha')
-			results[0] = u.omit(results[0], 'created_at')
+			var result = JSON.parse(JSON.stringify(results[0]))
 
-			res.status(302).render('../views/viewQuery.ejs', { type : body.viewType, id : id, results : results[0] })
+			result = u.omit(result, '_id')
+			result = u.omit(result, '__v')
+			result = u.omit(result, 'senha')
+			result = u.omit(result, 'created_at')
+
+			if (!u.keys(result).length) return res.status(500)
+
+			res.status(200).render('../views/viewQuery.ejs', { type : body.viewType, id : id, results : result })
 		})
 }

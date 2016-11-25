@@ -10,10 +10,20 @@ module.exports = function (req, res) {
 	const id         = body.id
 
 	persistUpdate(collection, id, u.omit(body, 'viewType'), function (err) {
-		if (err) return res.send(500)
+		if (err) return res
+			.status(200)
+			.render('../views/error.ejs', {
+				type : 500, 
+				message : 'Ocorreu um problema com a edição do documento, por favor tente novamente!' 
+			})
 
 		findDoc(collection, { _id : id }, null, function (err, results) {
-			if (err) return res.send(500)
+			if (err) return res
+				.status(200)
+				.render('../views/error.ejs', {
+					type : 500, 
+					message : 'Ocorreu um problema com a edição do documento, por favor tente novamente!' 
+				})
 
 			const id   = results[0]._id
 

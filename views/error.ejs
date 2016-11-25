@@ -1,38 +1,15 @@
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-iso.css">
 <link rel="stylesheet" href="/css/common.css">
 
-<style type="text/css">
-	
-	input {
-		width: 400px !important;
-	}
-
-</style>
-
 <div class="bootstrap-iso">
 	<div class="container">
 
 	<div class="row equal-height-row">
 	  <div class="jumbotron background_color col-md-12" id="query_view_div">
-			<h1>Resultados</h1>
+			<h1>Ops, algo deu errado...</h1>
+			<p style="margin-top: 40px"><%= message %></p>
 	  </div>
 	</div>
-
-		<div class="row equal-height-row">
-		  <div class="jumbotron background_color col-md-12" id="query_view_div">
-		  	<form method="POST" action="/admin/edit">
-		  		<input type="hidden" name="viewType" value="<%= type %>">
-		  		<input type="hidden" name="id" value="<%= id %>">
-			    <% for (var key in results) { %>
-			    <div class="form-group">
-			    	<label><%= key %>:</label>
-						<input type="text" name="<%= key %>" value="<%= results[key] %>" class="form-control">
-			    </div>
-			    <% } %>
-			    <button type="submit" class="btn btn-default">Alterar</button>
-		    </form>
-		  </div>
-		</div>
 
 		<div class="row equal-height-row">
 			<div class="jumbotron background_color col-md-12">

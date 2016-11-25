@@ -8,21 +8,26 @@ const persistDoc      = require('../functions/mongo').persistNew
 module.exports = function (req, res) {
 	const body = req.body
 
-	persistDoc(body.viewType, createDoc(body), function (err, results) {
+	persistDoc(body.viewType, createDoc(body), function (err, result) {
 			if (err) {
 				log(err)
-				return res.send(500)
+				return res
+				.status(200)
+				.render('../views/error.ejs', {
+					type : 500, 
+					message : 'Ocorreu um problema com a criação do documento, por favor tente novamente!' 
+				})
 			}
 
-			log(results)
-			res.send('ok')
-			// const id   = results[0]._id
+			log(result)
 
-			// results[0] = u.omit(results[0], '_id')
-			// results[0] = u.omit(results[0], '__v')
-			// results[0] = u.omit(results[0], 'senha')
-			// results[0] = u.omit(results[0], 'created_at')
+			const id   = result._id
 
-			// res.status(302).render('../views/viewQuery.ejs', { type : body.viewType, id : id, results : results[0] })
+			result = u.omit(result, '_id')
+			result = u.omit(result, '__v')
+			result = u.omit(result, 'senha')
+			result = u.omit(result, 'created_at')
+
+			res.status(200).render('../views/viewQuery.ejs', { type : body.viewType, id : id, results : result })
 		})
 }

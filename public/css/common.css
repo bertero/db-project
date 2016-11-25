@@ -28,6 +28,10 @@
 	cursor: pointer;
 }
 
+.background_color {
+	background-color: #C8DAF7 !important;
+}
+
 h1 { 
 	font-weight: 300 !important; 
 	font-size: 38px !important; 
@@ -49,4 +53,10 @@ h3 {
 	margin: 0px 0px 0px 0px !important; 
 	line-height: 120% !important; 
 	font-family: 'Open sans', sans-serif !important;
+}
+
+select {
+	margin: 40px 0 40px 0 !important;
+	font-family: sans-serif !important;
+	font-size: 25px !important;
 }

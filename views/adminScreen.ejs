@@ -6,17 +6,17 @@
 <div class="bootstrap-iso">
 	<div class="container">
 		<div class="row equal-height-row">
-		  <div class="jumbotron col-md-6 pointer" id="view_button_div">
+		  <div class="jumbotron background_color col-md-6 pointer" id="view_button_div">
 		  	<h1>Visualizar</h1>
 		  </div>
 
-		  <div class="jumbotron col-md-6 pointer" id="add_button_div">
+		  <div class="jumbotron background_color col-md-6 pointer" id="add_button_div">
 		  	<h1>Criar</h1>
 		  </div>
 	  </div>
 
 	  <div class="row equal-height-row">
-		  <div class="jumbotron start_hidden col-md-12" id="query_form_div">
+		  <div class="jumbotron background_color start_hidden col-md-12" id="query_form_div">
 		  	<div id="query_form">
 		  		<h1>Formulário de pesquisa</h1>
 		  		<select id="view_form_type_selector">
@@ -61,7 +61,7 @@
 	  				</div>
 
 	  				<div id="view_form_filiais_div" class="start_hidden">
-	  					<form id="view_filiais" action="visualizar" method="POST">
+	  					<form id="view_filiais" action="/admin/create" method="POST">
 	  						<input type="hidden" name="viewType" value="filiais">
 	  						<p>
 		  						Nome:
@@ -82,7 +82,7 @@
 	  				</div>
 
 	  				<div id="view_form_funcionarios_div" class="start_hidden">
-	  					<form id="view_funcionarios" action="visualizar" method="POST">
+	  					<form id="view_funcionarios" action="/admin/create" method="POST">
 	  						<input type="hidden" name="viewType" value="funcionarios">
 	  						<p>
 	  							Nome:
@@ -111,7 +111,7 @@
 	  				</div>
 
 	  				<div id="view_form_pedidos_div" class="start_hidden">
-	  					<form id="view_pedidos" action="visualizar" method="POST">
+	  					<form id="view_pedidos" action="/admin/create" method="POST">
 	  						<input type="hidden" name="viewType" value="pedidos">
 	  						<p>
 	  							Código de Pedido:
@@ -124,7 +124,7 @@
 	  				</div>
 
 	  				<div id="view_form_produtos_div" class="start_hidden">
-	  					<form id="view_produtos" action="visualizar" method="POST">
+	  					<form id="view_produtos" action="/admin/create" method="POST">
 	  						<input type="hidden" name="viewType" value="produtos">
 	  						<p>
 		  						Nome:
@@ -146,7 +146,7 @@
 		</div>
 
 		<div class="row equal-height-row">
-		  <div class="jumbotron start_hidden col-md-12" id="add_form_div">
+		  <div class="jumbotron background_color start_hidden col-md-12" id="add_form_div">
 	  		<h1>Formluario de criacao</h1>
 	  		<select id="create_form_type_selector">
 	  			<option value="clientes">Cliente</option>
@@ -161,7 +161,7 @@
   			<div id="create_form_container">
 
   				<div id="create_form_clientes_div">
-  					<form id="create_clientes" action="visualizar" method="POST">
+  					<form id="create_clientes" action="/admin/create" method="POST">
 	  					<input type="hidden" name="viewType" value="clientes">
 	  					<p>
 	  						Nome Contato:
@@ -194,7 +194,7 @@
   				</div>
 
   				<div id="create_form_filiais_div" class="start_hidden">
-  					<form id="create_filiais" action="visualizar" method="POST">
+  					<form id="create_filiais" action="/admin/create" method="POST">
   						<input type="hidden" name="viewType" value="filiais">
   						<p>
 	  						Nome:
@@ -223,7 +223,7 @@
   				</div>
 
   				<div id="create_form_funcionarios_div" class="start_hidden">
-  					<form id="create_funcionarios" action="visualizar" method="POST">
+  					<form id="create_funcionarios" action="/admin/create" method="POST">
   						<input type="hidden" name="viewType" value="funcionarios">
   						<p>
 	  						Nome:
@@ -264,7 +264,7 @@
   				</div>
 
   				<div id="create_form_pedidos_div" class="start_hidden">
-  					<form id="create_pedidos" action="visualizar" method="POST">
+  					<form id="create_pedidos" action="/admin/create" method="POST">
   						<input type="hidden" name="viewType" value="pedidos">
   						<p>
 	  						Email do Cliente:
@@ -297,7 +297,7 @@
   				</div>
 
   				<div id="create_form_produtos_div" class="start_hidden">
-  					<form id="create_produtos" action="visualizar" method="POST">
+  					<form id="create_produtos" action="/admin/create" method="POST">
   						<input type="hidden" name="viewType" value="produtos">
   						<p>
 	  						Nome:
@@ -326,7 +326,7 @@
 		</div>
 
 		<div class="row equal-height-row">
-		  <div class="jumbotron start_hidden col-md-12" id="add_result_div">
+		  <div class="jumbotron background_color start_hidden col-md-12" id="add_result_div">
 		  	<h1>Resultado da criacao</h1>
 		  	<div></div>
 		  </div>

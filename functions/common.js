@@ -6,6 +6,7 @@ module.exports = {
   keepAwake                 : keepAwake,
   listenToUncaughtException : listenToUncaughtException,
   filter                    : filterJson,
+  createMongoJson           : createMongoJson,
 }
 
 function log (message, details) {
@@ -105,7 +106,7 @@ function createMongoJson(body) {
       }
       break
   }
-  return u.compact(query)
+  return JSON.parse(JSON.stringify(query, null, 2))
 }
 
 function createProductsList(body) {

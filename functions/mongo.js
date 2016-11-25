@@ -50,7 +50,7 @@ function persistNewDoc(collection, data, callback) {
 
 function persistUpdatedDoc(collection, id, data, callback) {
 
-	module.exports.collections[collection].update({ _id : id}, data).exec(callback)
+	module.exports.collections[collection].update({ _id : id }, data).exec(callback)
 
 }
 
