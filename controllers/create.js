@@ -15,12 +15,14 @@ module.exports = function (req, res) {
 				.status(200)
 				.render('../views/error.ejs', {
 					type : 500, 
-					message : 'Ocorreu um problema com a criação do documento, por favor tente novamente!' 
+					message : 'Ocorreu um problema com a criação do documento, por favor tente novamente!'
 				})
 			}
 
-			log(result)
+			result = JSON.parse(JSON.stringify(result))
 
+			log(result)
+			
 			const id   = result._id
 
 			result = u.omit(result, '_id')

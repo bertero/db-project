@@ -1,5 +1,6 @@
 const strftime = require('strftime')
 const u        = require('underscore')
+const findDoc  = require('./mongo.js').find
 
 module.exports = {
   log                       : log,
@@ -48,6 +49,7 @@ function filterJson (json) {
 
 function createMongoJson(body) {
   var query = {}
+  var shouldReplaceIds = false
   switch (body.viewType) {
     case 'clientes':
       query = {
@@ -70,6 +72,7 @@ function createMongoJson(body) {
         telefone       : body.telefone,
         responsavel_id : body.responsavelId
       }
+      shouldReplaceIds = true
       break
 
     case 'funcionarios':
@@ -88,12 +91,16 @@ function createMongoJson(body) {
 
     case 'pedidos':
       query = {
-        _id            : body.id,
-        lista_produtos : createProductsList(body),
-        filial_id      : body.filialId,
-        funcionario_id : body.funcionarioId,
-        cliente_id     : body.clienteId
+        _id               : body.id,
+        lista_produtos    : createProductsList(body),
+        cidade_base       : '',
+        filial_id         : body.filialId,
+        email_funcionario : '',
+        funcionario_id    : body.funcionarioId,
+        email_cliente     : '',
+        cliente_id        : body.clienteId
       }
+      shouldReplaceIds = true
       break
 
     case 'produtos':
@@ -106,6 +113,14 @@ function createMongoJson(body) {
       }
       break
   }
+
+
+
+  // const query = body.viewType === 'pedidos'
+  //   ? {  }
+
+  // findDoc()
+
   return JSON.parse(JSON.stringify(query, null, 2))
 }
 

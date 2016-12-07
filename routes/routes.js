@@ -8,7 +8,6 @@ const renderMap        = {
 	viewQuery : require('../controllers/viewQuery'),
 	edit      : require('../controllers/edit'),
   create    : require('../controllers/create'),
-  delete    : require('../controllers/deleteDocument'),
 }
 
 module.exports = {
@@ -34,6 +33,4 @@ function initRoutes() {
   //Persist new documents
   app.post('/admin/create', renderMap.create)
 
-  //Delete selected document only after visualization
-  app.post('/admin/deleteDoc', renderMap.delete)
 }
