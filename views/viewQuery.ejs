@@ -7,6 +7,11 @@
 		width: 400px !important;
 	}
 
+	.textarea {
+		width: 850px !important;
+		height: 50px !important;
+	}
+
 </style>
 
 <div class="bootstrap-iso">
@@ -26,7 +31,11 @@
 			    <% for (var key in results) { %>
 			    <div class="form-group">
 			    	<label><%= key %>:</label>
-						<input type="text" name="<%= key %>" value="<%= results[key] %>" class="form-control">
+			    	<% if (typeof(results[key]) === 'string') { %>
+							<input type="text" name="<%= key %>" value="<%= results[key] %>" class="form-control">
+						<% } else { %>
+							<input type="textarea" name="<%= key %>" value="<%= JSON.stringify(results[key], null, 2) %>" class="form-control textarea">
+						<% } %>
 			    </div>
 			    <% } %>
 			    <button type="submit" class="btn btn-default">Alterar</button>

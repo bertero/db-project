@@ -8,10 +8,8 @@ module.exports = function (req, res) {
 
 		availableProducts = u.map(availableProducts, function (productObj) { return productObj.nome })
 
-		log(availableProducts)
-
 		if (!availableProducts) availableProducts = ['Estoque Vazio']
-		res.render('../views/adminScreen.ejs', { numberProducts : 5, availableProducts : availableProducts })
+		res.render('../views/adminScreen.ejs', { numberProducts : availableProducts.length, availableProducts : availableProducts })
 
 	})
 }

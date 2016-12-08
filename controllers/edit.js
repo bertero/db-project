@@ -9,6 +9,10 @@ module.exports = function (req, res) {
 	const collection = body.viewType
 	const id         = body.id
 
+	if (collection === 'pedidos') body.lista_produtos = JSON.parse(body.lista_produtos)
+
+	body = cleanStrings(body)
+
 	persistUpdate(collection, id, u.omit(body, 'viewType'), function (err) {
 		if (err) return res
 			.status(200)
@@ -37,4 +41,14 @@ module.exports = function (req, res) {
 	})
 
 	
+}
+
+function cleanStrings(body) {
+	u.each(body, function (value, key) {
+		log('before: ' + value)
+		if (key !== 'lista_produtos') {
+			body[key] = value.replace(/"/g, '')
+		}
+		log('after: ' + body[key])
+	})
 }
