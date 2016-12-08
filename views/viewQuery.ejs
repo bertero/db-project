@@ -31,7 +31,7 @@
 			    <% for (var key in results) { %>
 			    <div class="form-group">
 			    	<label><%= key %>:</label>
-			    	<% if (typeof(results[key]) === 'string') { %>
+			    	<% if (typeof(results[key]) === 'string' || typeof(results[key]) === 'number') { %>
 							<input type="text" name="<%= key %>" value="<%= results[key] %>" class="form-control">
 						<% } else { %>
 							<input type="textarea" name="<%= key %>" value="<%= JSON.stringify(results[key], null, 2) %>" class="form-control textarea">

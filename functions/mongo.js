@@ -58,8 +58,6 @@ function persistUpdatedDoc(collection, id, data, callback) {
 
 function findDoc(collection, query, infoRequested, callback) {
 
-	log(query)
-
 	if (!query)         query         = {}
 	if (!infoRequested) infoRequested = {}
 
@@ -138,9 +136,6 @@ function createMongoJson(body, isCreate, callback) {
       break
   }
 
-  log('collection: ' + collection)
-  log('shouldReplaceIds: ' + shouldReplaceIds)
-
   async.parallel({
     filiais : function (cb1) {
       if (!shouldReplaceIds || collection !== 'pedidos') return cb1()
@@ -173,9 +168,7 @@ function createMongoJson(body, isCreate, callback) {
         query.cliente_id     = results.clientes
       }
     }
-    log('query -------------------')
-    log(JSON.parse(JSON.stringify(query, null, 2)))
-    callback(null, JSON.parse(JSON.stringify(u.compact(query), null, 2)))
+    callback(null, cleanJson(query), null, 2)
   })
 }
 
@@ -184,7 +177,14 @@ function createProductsList(body) {
   for (var index = 0; index < 10; index++) {
     if (body['produto_' + index]) list[body['produto_' + index]] = body['quantidade_' + index]
   }
-	log('items list')
-	log(list)
   return list
+}
+
+function cleanJson(data) {
+	data = JSON.parse(JSON.stringify(data))
+	u.each(data, function (value, key) {
+		if (!value) delete data[key]
+		if (key === 'lista_produtos' && !u.keys(value).length) delete data[key]
+	})
+	return data
 }

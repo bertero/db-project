@@ -8,9 +8,6 @@ const persistDoc      = require('../functions/mongo').persistNew
 module.exports = function (req, res) {
 	const body = req.body
 
-	log('body +++++++++++++++')
-	log(body)
-
 	createDoc(body, true, function (err, doc) {
 		if (err) {
 			log(err)
@@ -38,7 +35,7 @@ module.exports = function (req, res) {
 				
 				const id   = result._id
 
-				result = u.omit(result, '_id')
+				if (body.viewType !== 'pedidos') result = u.omit(result, '_id')
 				result = u.omit(result, '__v')
 				result = u.omit(result, 'senha')
 				result = u.omit(result, 'created_at')

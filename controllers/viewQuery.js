@@ -41,7 +41,7 @@ module.exports = function (req, res) {
 
 				var result = JSON.parse(JSON.stringify(results[0]))
 
-				result = u.omit(result, '_id')
+				if (body.viewType !== 'pedidos') result = u.omit(result, '_id')
 				result = u.omit(result, '__v')
 				result = u.omit(result, 'senha')
 				result = u.omit(result, 'created_at')
